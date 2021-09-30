@@ -1,14 +1,24 @@
 const tabItems = document.querySelectorAll('.tab-item');
 const tabItems = document.querySelectorAll('.tab-content-item');
 
+//select tab content item 
 function selectItem(e){
     removeBorder();
-    /* select content item and add it to border */
+    removeShow();
+    /*  add border to current tab */
     this.classList.add('tab-border');
+    // grab content from dom
+    const tabContentItem = document.querySelector(`#${this.id}-content`);
+    //add show class
+    tabContentItem.classList.add('show');
+
 }
 
 function removeBorder(){
     tabItems.forEach(item => item.classList.remove('tab-border'));
+}
+function removeShow(){
+    tabItems.forEach(item => item.classList.remove('show'));
 }
 
 tabItems.forEach(item=>item.addEventListener('click',selectItem));
